@@ -51,18 +51,40 @@ class _ItemWidgetState extends State<ItemWidget> {
   @override
   Widget build(BuildContext context) {
     print(itemModel?.length);
-    return  Visibility(
-        visible: isLoader,
-      replacement: Center(
-      child: CircularProgressIndicator(),
+    return  Card(
+      shadowColor: Colors.white12,
+      elevation: 10.0,
+      child: Visibility(
+          visible: isLoader,
+        replacement: const Center(
+        child: CircularProgressIndicator(),
+        ),
+          child:Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: ListView.builder(
+              itemCount: itemModel?.length,
+              itemBuilder:(BuildContext context, int index) {
+             return  Card(
+              
+              elevation: 7.88,
+               child: ListTile(
+                
+                leading: Image.network(itemModel![index].image.toString(),width: 50,),
+                title:Text(
+                  itemModel![index].title,
+                maxLines:1
+                ),
+                trailing: Text(
+                '\$${itemModel![index].price}',
+                  // ignore: prefer_const_constructors
+                  style: TextStyle(color: Colors.deepPurple,fontSize: 16,fontWeight: FontWeight.bold),),
+                minVerticalPadding: 30,
+                
+               ),
+             );
+                  } ),
+          ),
       ),
-        child:ListView.builder(
-          itemCount: itemModel?.length,
-          itemBuilder:(BuildContext context, int index) {
-         return  ListTile(
-          title:Text(itemModel![index].title)
-         );
-      } ),
     );
   }
 }
