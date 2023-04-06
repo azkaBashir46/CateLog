@@ -10,7 +10,7 @@ final int data=88;
   @override  
   Widget build(BuildContext context) {  
     return MaterialApp(  
-      home:const HomePage(),
+      home: HomePage(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple
 
@@ -24,7 +24,7 @@ final int data=88;
       routes: 
         {
         "/login":(context)=>const LoginPage(),
-        "/home":(context)=>const HomePage()
+        "/home":(context)=> HomePage()
         }
       
        
