@@ -1,4 +1,5 @@
 import 'package:catelog/pages/Model/item_product.dart';
+import 'package:catelog/pages/home_pagedetail.dart';
 import 'package:catelog/services/item_services.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -62,6 +63,7 @@ class _ItemWidgetState extends State<ItemWidget> {
           child:Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: GridView.builder(
+              
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
@@ -69,38 +71,47 @@ class _ItemWidgetState extends State<ItemWidget> {
                 ),
               itemCount: itemModel?.length,
               itemBuilder:(BuildContext context, int index) {
-             return  Card(
-              clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              elevation: 7.88,
-               child: GridTile(
-                header:Container(
-                  padding: const EdgeInsets.all(12.0),
-                  decoration:const BoxDecoration(
-                    color: Colors.deepPurple
-                  ),
-
-                  child: Text(
-                    itemModel![index].title,
-                    style:const TextStyle(
-                      color: Colors.white,
+             return  InkWell(
+              onTap: (){
+                 Navigator.push( context,
+    MaterialPageRoute(builder: (context) =>  HomeDetailPage(itemModel:itemModel![index])),
+  );
+              },
+               child: Card(
+                         
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                elevation: 7.88,
+                 child: GridTile(
+                  
+                  header:Container(
+                    padding: const EdgeInsets.all(12.0),
+                    decoration:const BoxDecoration(
+                      color: Colors.deepPurple
                     ),
-                  maxLines:1
+             
+                    child: Text(
+                      itemModel![index].title,
+                      style:const TextStyle(
+                        color: Colors.white,
+                      ),
+                    maxLines:1
+                    ),
                   ),
-                ),
-                
-                footer: Container(
-                  padding: const EdgeInsets.all(12.0),
-                  decoration: const BoxDecoration(
-                    color: Colors.black
+                  
+                  footer: Container(
+                    padding: const EdgeInsets.all(12.0),
+                    decoration: const BoxDecoration(
+                      color: Colors.black
+                    ),
+                    child: Text(
+                    '\$${itemModel![index].price}',
+                      // ignore: prefer_const_constructors
+                      style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
                   ),
-                  child: Text(
-                  '\$${itemModel![index].price}',
-                    // ignore: prefer_const_constructors
-                    style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
-                ),
-                child: Image.network(itemModel![index].image.toString(),width: 50,),
-                
+                  child: Image.network(itemModel![index].image.toString(),width: 50,),
+                  
+                 ),
                ),
              );
                   } ),
