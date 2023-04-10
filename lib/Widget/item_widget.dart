@@ -74,7 +74,7 @@ class _ItemWidgetState extends State<ItemWidget> {
              return  InkWell(
               onTap: (){
                  Navigator.push( context,
-         MaterialPageRoute(builder: (context) =>  HomeDetailPage(itemModel:itemModel![index])),
+                MaterialPageRoute(builder: (context) =>  HomeDetailPage(itemModel:itemModel![index])),
   );
               },
                child: Card(
