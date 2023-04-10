@@ -8,6 +8,8 @@ class ItemModel {
    final String description;
     String? category;
     final String? image;
+
+  static var length;
   ItemModel({
     required this.id,
     required this.price,

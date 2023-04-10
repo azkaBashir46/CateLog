@@ -12,7 +12,7 @@ final  List<dynamic> data=[{"id":1,"name":"usama","age":33}];
       appBar: AppBar(
         title:const Text("Catelog") ,
       ),
-      body:ItemWidget(),
+      body:const ItemWidget(),
         drawer:  const DrawerWidget()
     );
   }
