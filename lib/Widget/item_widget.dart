@@ -74,7 +74,7 @@ class _ItemWidgetState extends State<ItemWidget> {
              return  InkWell(
               onTap: (){
                  Navigator.push( context,
-    MaterialPageRoute(builder: (context) =>  HomeDetailPage(itemModel:itemModel![index])),
+         MaterialPageRoute(builder: (context) =>  HomeDetailPage(itemModel:itemModel![index])),
   );
               },
                child: Card(
@@ -109,7 +109,9 @@ class _ItemWidgetState extends State<ItemWidget> {
                       // ignore: prefer_const_constructors
                       style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
                   ),
-                  child: Image.network(itemModel![index].image.toString(),width: 50,),
+                  child: Hero(
+                    tag:itemModel![index].id.toString() ,
+                    child: Image.network(itemModel![index].image.toString(),width: 50,)),
                   
                  ),
                ),
