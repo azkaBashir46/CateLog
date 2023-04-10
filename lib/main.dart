@@ -1,3 +1,4 @@
+import 'package:catelog/Widget/themes.dart';
 import 'package:catelog/pages/home_page.dart';
 import 'package:catelog/pages/login_page.dart';
 import 'package:flutter/material.dart';  
@@ -11,15 +12,9 @@ final int data=88;
   Widget build(BuildContext context) {  
     return MaterialApp(  
       home: HomePage(),
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple
-
-      ),
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData(
-        // brightness: Brightness.dark,
-        primarySwatch: Colors.deepPurple
-      ),
+      theme: MyTheme.lightTheme(context),
+      themeMode: ThemeMode.system,
+      darkTheme: MyTheme.darkTheme(context),
       initialRoute: '/login',
       routes: 
         {
