@@ -1,21 +1,24 @@
+import 'package:catelog/Widget/themes.dart';
 import 'package:catelog/pages/Model/item_product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:http/http.dart' as http;
 class HomeDetailPage extends StatelessWidget {
   final ItemModel itemModel;
 
   const HomeDetailPage({super.key, required this.itemModel});
-  
 
   @override
   Widget build(BuildContext context) {
     return 
     Scaffold(
-      appBar: AppBar(),
-      backgroundColor: Colors.blue[100],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -25,14 +28,14 @@ class HomeDetailPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    // MyTheme.darkBluishColor,
-                    Colors.black12
+                    MyTheme.darkBluishColor
+                    
                   ),
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
-              child: "Buy".text.make(),
-            ).wh(100, 40)
+              child: "Add to Cart".text.make(),
+            ).wh(120, 40)
           ],
         ).p32(),
       ),
@@ -42,25 +45,25 @@ class HomeDetailPage extends StatelessWidget {
           children: [
             Hero(
               tag: Key(itemModel.id.toString()),
-              child: Image.network("${itemModel.image}"),
+              child: Image.network("${itemModel.image}").backgroundColor(context.canvasColor).wOneThird(context).hOneThird(context),
             ).h32(context),
             Expanded(
                 child: VxArc(
-              height: 30.0,
+              height: 40.0,
               arcType: VxArcType.CONVEY,
               edge: VxEdge.TOP,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
-                    itemModel.title.text.xl2.maxLines(1)
-                        // .color(MyTheme.darkBluishColor)
-                        .color(Colors.black12)
-                        .bold.pink700
+                    itemModel.title.text.xl2.maxLines(1).overflow(TextOverflow.ellipsis).align(TextAlign.center)
+                        .color(context.accentColor)
+                        .bold
                         .make(),
-                    itemModel.description.text.textStyle(context.captionStyle).xl.make(),
-                    10.heightBox.color(Colors.black12),
+                    10.heightBox,
+                    itemModel.description.text.maxLines(4).textStyle(context.captionStyle).align(TextAlign.justify).xl.make().py32(),
+
                   ],
                 ).py64().px24()
               ),

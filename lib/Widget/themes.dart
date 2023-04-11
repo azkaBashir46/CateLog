@@ -19,6 +19,10 @@ class MyTheme{
       // fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.black,
       canvasColor: darkCreamColor,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: lightBluishColor,
+        foregroundColor: Colors.white
+      ),
       buttonColor: lightBluishColor,
       accentColor: Colors.white,
       appBarTheme: AppBarTheme(

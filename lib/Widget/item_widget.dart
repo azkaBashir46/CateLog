@@ -1,4 +1,6 @@
 import 'package:catelog/Widget/home_widgets/catalog_header.dart';
+// import 'package:catelog/core/store.dart';
+import 'package:catelog/pages/Model/cart.dart';
 import 'package:catelog/pages/Model/item_product.dart';
 import 'package:catelog/pages/home_pagedetail.dart';
 import 'package:catelog/services/item_services.dart';
@@ -42,26 +44,34 @@ class _ItemWidgetState extends State<ItemWidget> {
   }
   @override
   Widget build(BuildContext context) {
-    print(itemModel?.length);
+    // final cart = (VxState.store as MyStore).cart;
+
    return Scaffold(
         backgroundColor: context.canvasColor,
+         floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        // backgroundColor: context.floatingActionButtonTheme,
+        child: const Icon(Icons.card_travel_sharp),
+      ),
         // floatingActionButton: VxBuilder(
-          // mutations: {AddMutation, RemoveMutation},
-          // builder: (ctx, _) => FloatingActionButton(
-          //   onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          //   backgroundColor: context.theme.buttonColor,
-          //   child: Icon(
-          //     CupertinoIcons.cart,
-          //     color: Colors.white,
-          //   ),
-          // ).badge(
-          //     color: Vx.gray200,
-          //     size: 22,
-          //     count: _cart.items.length,
-          //     textStyle: TextStyle(
-          //       color: Colors.black,
-          //       fontWeight: FontWeight.bold,
-          //     )),
+        //   mutations:  {AddMutation, RemoveMutation},
+        //   builder: (ctx, _) async => FloatingActionButton(
+        //     onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        //     backgroundColor: context.theme.buttonColor,
+        //     child: Icon(
+        //       CupertinoIcons.cart,
+        //       color: Colors.white,
+        //     ),
+        //   ).badge(
+        //       color: Vx.gray200,
+        //       size: 22,
+        //       count: cart.items.length,
+        //       textStyle: TextStyle(
+        //         color: Colors.black,
+        //         fontWeight: FontWeight.bold,
+        //       )),
         // ),
         body: SafeArea(
           child: Container(
@@ -133,7 +143,7 @@ class CatalogItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            catalog.title.text.lg.color(context.accentColor).bold.maxLines(1).make(),
+            catalog.title.text.lg.color(context.accentColor).bold.maxLines(1).overflow(TextOverflow.ellipsis).make(),
             catalog.description.text.textStyle(context.captionStyle).maxLines(3).make(),
             10.heightBox
             // ButtonBar(
