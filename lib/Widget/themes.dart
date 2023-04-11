@@ -12,6 +12,10 @@ class MyTheme{
         color: Colors.white,
          elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
+        textTheme: Theme.of(context).textTheme.copyWith(
+              headline6:
+                  context.textTheme.headline6?.copyWith(color: Colors.black),
+            ),
        )
   );
    static ThemeData darkTheme(BuildContext context) => ThemeData(

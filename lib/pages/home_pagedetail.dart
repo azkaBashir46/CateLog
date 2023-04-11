@@ -28,7 +28,7 @@ class HomeDetailPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    MyTheme.darkBluishColor
+                    context.theme.buttonColor
                     
                   ),
                   shape: MaterialStateProperty.all(

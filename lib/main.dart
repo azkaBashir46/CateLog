@@ -1,4 +1,5 @@
 import 'package:catelog/Widget/themes.dart';
+import 'package:catelog/pages/cart_page.dart';
 import 'package:catelog/pages/home_page.dart';
 import 'package:catelog/pages/login_page.dart';
 import 'package:flutter/material.dart';  
@@ -19,7 +20,8 @@ final int data=88;
       routes: 
         {
         "/login":(context)=>const LoginPage(),
-        "/home":(context)=> HomePage()
+        "/home":(context)=> HomePage(),
+        "/cart":(context) => CartPage()
         }
       
        

@@ -50,6 +50,7 @@ class _ItemWidgetState extends State<ItemWidget> {
         backgroundColor: context.canvasColor,
          floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Navigator.pushNamed(context, '/cart');
           // Add your onPressed code here!
         },
         // backgroundColor: context.floatingActionButtonTheme,
